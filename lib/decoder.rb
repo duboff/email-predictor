@@ -13,6 +13,8 @@ class Decoder
     case address_first
     when first_name + "." + last_name
       :first_name_dot_last_name
+    when first_name + "." + last_name[0]
+      :first_name_dot_last_initial
     end
   end
 end

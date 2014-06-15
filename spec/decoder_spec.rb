@@ -14,5 +14,12 @@ describe Decoder do
       expect(decoder.last_name).to eq 'smith'
       expect(decoder.pattern).to eq :first_name_dot_last_name
     end
+
+    it 'name.initial pattern' do
+      name = 'John Smith'
+      address = 'john.s@alphasights.com'
+      decoder.decode(address, name)
+      expect(decoder.pattern).to eq :first_name_dot_last_initial
+    end
   end
 end
