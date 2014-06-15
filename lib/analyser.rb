@@ -3,16 +3,18 @@ class Analyser
   attr_reader :seed, :decoder
   attr_accessor :pattern
 
-  def initialize(seed, decoder)
+  def initialize(seed)
     @seed = seed
-    @decoder = decoder
+    @decoder = Decoder.new
     @pattern = {}
   end
 
   def set_pattern
     @seed.each do |name, email|
       decoder.decode(email, name)
-      pattern[decoder.domain] = pattern[decoder.domain] ? nil : decoder.pattern
+      pattern[decoder.domain] ||= decoder.pattern
+      pattern[decoder.domain] = :inconclusive if pattern[decoder.domain] != decoder.pattern
+
     end
   end
 end
