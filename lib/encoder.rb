@@ -23,6 +23,4 @@ class Encoder
       self.email = 'No pattern match'
     end
   end
-
-
 end

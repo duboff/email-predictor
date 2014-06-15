@@ -38,7 +38,7 @@ describe Encoder do
       encoder.encode(name)
       expect(encoder.email).to eq 'No pattern match'
     end
-    it 'generates the right message iwith a wrong pattern' do
+    it 'generates the right message with a wrong pattern' do
       pattern = :bla_bla
       encoder = Encoder.new(pattern, domain)
       encoder.encode(name)
