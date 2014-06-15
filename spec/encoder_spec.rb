@@ -25,6 +25,11 @@ describe Encoder do
       encoder.encode(name)
       expect(encoder.email).to eq 'j.smith@alphasights.com'
     end
-
+    it 'initial.initial pattern' do
+      pattern = :first_initial_dot_last_initial
+      encoder = Encoder.new(pattern, domain)
+      encoder.encode(name)
+      expect(encoder.email).to eq 'j.s@alphasights.com'
+    end
   end
 end
