@@ -1,3 +1,7 @@
+require 'encoder'
+require 'analyser'
+require 'decoder'
+
 class Predictor
 
   attr_accessor :analyser
