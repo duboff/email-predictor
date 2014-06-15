@@ -27,6 +27,11 @@ describe Decoder do
       decoder.decode(address, name)
       expect(decoder.pattern).to eq :first_initial_dot_last_name
     end
-
+    it 'initial.initial pattern' do
+      name = 'John Smith'
+      address = 'j.s@alphasights.com'
+      decoder.decode(address, name)
+      expect(decoder.pattern).to eq :first_initial_dot_last_initial
+    end
   end
 end
