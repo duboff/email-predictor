@@ -19,6 +19,8 @@ class Encoder
       self.email = split.first[0] + '.' + split.last + "@#{domain}"
     when :first_initial_dot_last_initial
       self.email = split.first[0] + '.' + split.last[0] + "@#{domain}"
+    else
+      self.email = 'No pattern match'
     end
   end
 
