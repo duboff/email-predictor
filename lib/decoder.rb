@@ -19,6 +19,8 @@ class Decoder
       :first_initial_dot_last_name
     when first_name[0] + "." + last_name[0]
       :first_initial_dot_last_initial
+    else
+      nil
     end
   end
 end
