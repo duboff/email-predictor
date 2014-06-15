@@ -12,7 +12,7 @@ class Analyser
   def set_pattern
     @seed.each do |name, email|
       decoder.decode(email, name)
-      pattern[decoder.domain] ||= decoder.pattern
+      pattern[decoder.domain] = pattern[decoder.domain] ? nil : decoder.pattern
     end
   end
 end
