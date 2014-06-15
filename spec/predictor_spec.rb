@@ -16,9 +16,10 @@ describe Predictor do
   let(:predictor) { Predictor.new }
   context 'Guessing email addresses' do
 
-    xit 'guesses correctly an email when there is a conclusive answer' do
+    it 'guesses correctly an email when there is a conclusive answer' do
       name, domain = "Peter Wong", "alphasights.com"
       predictor.seed(seed)
+      # p predictor.analyser
       expect(predictor.predict(name, domain)).to eq "peter.wong@alphasights.com"
     end
 

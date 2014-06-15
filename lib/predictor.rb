@@ -4,11 +4,11 @@ class Predictor
 
   def seed(seed)
     @analyser = Analyser.new(seed)
+    self.analyser.set_pattern
   end
 
   def predict(name, domain)
-    analyser.set_pattern
-    encoder = Encoder.new(analyser.pattern, domain)
+    encoder = Encoder.new(analyser.pattern[domain], domain)
     encoder.encode(name)
   end
 end

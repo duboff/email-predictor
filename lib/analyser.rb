@@ -14,7 +14,6 @@ class Analyser
       decoder.decode(email, name)
       pattern[decoder.domain] ||= decoder.pattern
       pattern[decoder.domain] = :inconclusive if pattern[decoder.domain] != decoder.pattern
-
     end
   end
 end
