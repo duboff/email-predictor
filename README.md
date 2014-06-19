@@ -1,8 +1,6 @@
 Email Predictor
 ===============
-
 The rules for email prediction are outlined in [RULES.md](RULES.md).
-
 # Idea
 The goal of the project was to write a simple system to predict email addresses from the name and domain of the company. While the task itself is relatively straightforward my approach was to write code as if for a real project with only minor simplifications. I tried to adhere to the following:
 * Single purpose classes: separating functionality into separate objects that talk to each other. This would simplify changing the system later. For example adding another email pattern is trivial. It also wouldn't be to hard to generate physical mailing addresses using this system.
@@ -40,7 +38,6 @@ predictor.predict_correct_only('James Dean','alphasights.com')
 ```
 
 These functions can also be put in main.rb.
-
 # Installation
 From the Terminal:
 ```
@@ -49,7 +46,6 @@ $ cd email-predictor/
 $ bundle
 ```
 This assumes you have command line tools installed.
-
 # Testing
 To run the specs:
 ```
