@@ -1,26 +1,20 @@
 class Decoder
 
-  attr_accessor :domain, :first_name, :last_name, :pattern
+  attr_accessor :domain, :name, :pattern, :patterns
 
-  def decode(address, name)
-    self.domain = address.split('@').last
-    self.first_name = name.split(' ').first.downcase
-    self.last_name = name.split(' ').last.downcase
-    self.pattern = get_pattern(address.split('@').first)
+  def initialize(patterns)
+    @patterns = patterns
+  end
+
+  def decode(address, full_name)
+    address_first, self.domain = address.split('@')
+    self.name = full_name.downcase.split(' ')
+    self.pattern = get_pattern(address_first)
   end
 
   def get_pattern(address_first)
-    case address_first
-    when first_name + "." + last_name
-      :first_name_dot_last_name
-    when first_name + "." + last_name[0]
-      :first_name_dot_last_initial
-    when first_name[0] + "." + last_name
-      :first_initial_dot_last_name
-    when first_name[0] + "." + last_name[0]
-      :first_initial_dot_last_initial
-    else
-      nil
-    end
+    sat = patterns.select{ |pat| pat.call(name) == address_first}
+    raise 'Error' unless sat.size == 1
+    sat.first
   end
 end
