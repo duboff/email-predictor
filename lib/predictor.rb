@@ -1,6 +1,7 @@
-require 'encoder'
-require 'analyser'
-require 'decoder'
+require_relative "./encoder.rb"
+require_relative "./decoder.rb"
+require_relative "./analyser.rb"
+
 
 class Predictor
 
