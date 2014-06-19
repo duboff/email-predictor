@@ -3,9 +3,9 @@ class Analyser
   attr_reader :seed, :decoder
   attr_accessor :patterns
 
-  def initialize(seed)
+  def initialize(seed, available_patterns)
     @seed = seed
-    @decoder = Decoder.new
+    @decoder = Decoder.new(available_patterns)
     @patterns = {}
   end
 
