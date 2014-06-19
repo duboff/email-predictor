@@ -5,10 +5,10 @@ describe Encoder do
   let(:domain) { 'alphasights.com' }
   let(:patterns) do
     [
-      -> (encoder, name) { encoder.email = name.join('.') + "@#{encoder.domain}" },
-      -> (encoder, name) {encoder.email = name.first + '.' + name.last[0] + "@#{encoder.domain}"},
-      -> (encoder, name) {encoder.email = name.first[0] + '.' + name.last + "@#{encoder.domain}"},
-      -> (encoder, name) {encoder.email = name.first[0] + '.' + name.last[0] + "@#{encoder.domain}"}
+      -> (name) { name.join('.') },
+      -> (name) { name.first + '.' + name.last[0] },
+      -> (name) { name.first[0] + '.' + name.last },
+      -> (name) { name.first[0] + '.' + name.last[0] }
     ]
   end
 
