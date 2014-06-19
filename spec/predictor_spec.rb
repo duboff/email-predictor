@@ -1,6 +1,16 @@
 require 'predictor'
+require 'analyser'
+require 'encoder'
+require 'decoder'
 
 describe Predictor do
+
+  let(:available_patterns) do
+    [ -> (name) { name.join('.') },
+      -> (name) { name.first + '.' + name.last[0] },
+      -> (name) { name.first[0] + '.' + name.last },
+      -> (name) { name.first[0] + '.' + name.last[0] } ]
+  end
 
   let(:seed) do
     {
@@ -13,7 +23,8 @@ describe Predictor do
     }
   end
 
-  let(:predictor) { Predictor.new }
+  let(:predictor) { Predictor.new(available_patterns) }
+
   context 'Guessing email addresses' do
 
     it 'guesses correctly an email when there is a conclusive answer' do

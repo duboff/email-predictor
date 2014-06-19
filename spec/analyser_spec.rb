@@ -18,9 +18,9 @@ describe Analyser do
       "Steve Jobs" => "s.j@apple.com" }
   end
 
-  let(:analyser) {Analyser.new(seed, available_patterns)}
+  let(:analyser) {Analyser.new seed, Decoder.new(available_patterns) }
 
-  before {analyser.set_pattern}
+  before {analyser.set_patterns}
 
   context 'When the data is conclusive' do
     it 'guesses simple first_name_dot_last_name pattern' do
@@ -39,7 +39,7 @@ describe Analyser do
     end
     it 'returns all available patterns if a name can follow different patterns' do
       seed["J Peterson"] = 'j.peterson@alphasights.com'
-      analyser.set_pattern
+      analyser.set_patterns
       expect(analyser.patterns['alphasights.com']).to eq [available_patterns[0], available_patterns[2]]
     end
   end

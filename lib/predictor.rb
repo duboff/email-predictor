@@ -1,19 +1,18 @@
-require_relative "./encoder.rb"
-require_relative "./decoder.rb"
-require_relative "./analyser.rb"
-
-
 class Predictor
 
-  attr_accessor :analyser
+  attr_accessor :analyser, :available_patterns
+
+  def initialize(available_patterns)
+    @available_patterns = available_patterns
+  end
 
   def seed(seed)
-    @analyser = Analyser.new(seed)
-    self.analyser.set_pattern
+    @analyser = Analyser.new(seed, available_patterns)
+    self.analyser.set_patterns
   end
 
   def predict(name, domain)
-    encoder = Encoder.new(analyser.pattern[domain], domain)
+    encoder = Encoder.new(analyser.patterns[domain], domain)
     encoder.encode(name)
   end
 end
