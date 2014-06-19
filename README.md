@@ -7,7 +7,7 @@ The goal of the project was to write a simple system to predict email addresses 
 * Design patterns: in particular I used Strategy Pattern for the email encoder and something similar to it for decoder.
 * Isolating dependencies: each class is created with minimum number of dependecies.
  
-# Usage
+## Usage
 To generate predictions for the predefined list set in the problem description run the following command in the Terminal (assuming ruby is installed and you are in the correct folder):
 ```
 $ ruby main.rb
@@ -38,7 +38,7 @@ predictor.predict_correct_only('James Dean','alphasights.com')
 ```
 
 These functions can also be put in main.rb.
-# Installation
+## Installation
 From the Terminal:
 ```
 $ git clone git@github.com:duboff/email-predictor.git
@@ -46,7 +46,7 @@ $ cd email-predictor/
 $ bundle
 ```
 This assumes you have command line tools installed.
-# Testing
+## Testing
 To run the specs:
 ```
 $ rspec
