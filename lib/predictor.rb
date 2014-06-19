@@ -1,18 +1,19 @@
 class Predictor
 
-  attr_accessor :analyser, :available_patterns
+  attr_accessor :analyser, :decoder, :available_patterns, :predictions
 
   def initialize(available_patterns)
-    @available_patterns = available_patterns
+    @decoder = Decoder.new(available_patterns)
   end
 
   def seed(seed)
-    @analyser = Analyser.new(seed, available_patterns)
+    @analyser = Analyser.new(seed, decoder)
     self.analyser.set_patterns
   end
 
   def predict(name, domain)
-    encoder = Encoder.new(analyser.patterns[domain], domain)
-    encoder.encode(name)
+    return 'No prediction was possible' unless analyser.patterns[domain]
+    encoders = analyser.patterns[domain].map {|pattern| Encoder.new(domain, &pattern) }
+    encoders.map {|encoder| encoder.encode(name) }
   end
 end
