@@ -1,0 +1,5 @@
+require_relative './lib/predictor'
+require_relative './lib/encoder'
+require_relative './lib/decoder'
+require_relative './lib/analyser'
+require_relative './lib/constants'

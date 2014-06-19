@@ -10,7 +10,8 @@ class Encoder
 
   def encode(name)
     split = name.downcase.split(' ')
-    raise 'No pattern match' unless @pattern.lambda?
+    raise 'Not enough data' unless split.size == 2
+    raise 'This pattern is not a lambda' unless @pattern.lambda?
     @email = pattern.call(split) + "@#{domain}"
   end
 end
