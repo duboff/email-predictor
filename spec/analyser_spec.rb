@@ -20,25 +20,27 @@ describe Analyser do
 
   let(:analyser) {Analyser.new(seed, available_patterns)}
 
+  before {analyser.set_pattern}
+
   context 'When the data is conclusive' do
     it 'guesses simple first_name_dot_last_name pattern' do
-      analyser.set_pattern
+      expect(analyser.patterns['alphasights.com'].first).to eq available_patterns[0]
+    end
+    it 'guesses simple first_name_dot_last_name pattern' do
       expect(analyser.patterns['alphasights.com'].first).to eq available_patterns[0]
     end
     it 'guesses simple first_initial_dot_last_initial pattern' do
-      analyser.set_pattern
       expect(analyser.patterns['apple.com'].first).to eq available_patterns[3]
     end
   end
-  context 'when there is no more than one option' do
-    it 'does not return a pattern when patterns are different' do
-      analyser.set_pattern
+  context 'when there is more than one option' do
+    it 'returns all available patterns pattern when patterns are different' do
       expect(analyser.patterns['google.com']).to eq [available_patterns[1], available_patterns[2]]
     end
-    it 'does return a pattern when all matches are the same' do
-      seed["James Peterson"] = 'james.peterson@alphasights.com'
+    it 'returns all available patterns if a name can follow different patterns' do
+      seed["J Peterson"] = 'j.peterson@alphasights.com'
       analyser.set_pattern
-      expect(analyser.patterns['alphasights.com'].first).to eq available_patterns[0]
+      expect(analyser.patterns['alphasights.com']).to eq [available_patterns[0], available_patterns[2]]
     end
   end
 end

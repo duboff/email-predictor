@@ -14,6 +14,7 @@ class Analyser
       decoder.decode(email, name)
       patterns[decoder.domain] ||= decoder.patterns
       patterns[decoder.domain] += decoder.patterns if patterns[decoder.domain] != decoder.patterns
+      patterns[decoder.domain].uniq!
     end
   end
 end
