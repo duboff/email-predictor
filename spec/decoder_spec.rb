@@ -4,13 +4,10 @@ describe Decoder do
   context 'getting data out of email' do
 
     let(:available_patterns) do
-      [
-        -> (name) { name.join('.') },
+      [ -> (name) { name.join('.') },
         -> (name) { name.first + '.' + name.last[0] },
         -> (name) { name.first[0] + '.' + name.last },
-        -> (name) { name.first[0] + '.' + name.last[0] }
-      ]
-
+        -> (name) { name.first[0] + '.' + name.last[0] } ]
     end
 
     let(:decoder) { Decoder.new(available_patterns) }
