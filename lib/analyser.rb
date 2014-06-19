@@ -13,7 +13,7 @@ class Analyser
     @seed.each do |name, email|
       decoder.decode(email, name)
       patterns[decoder.domain] ||= decoder.patterns
-      patterns[decoder.domain] += decoder.patterns if patterns[decoder.domain] != decoder.patterns
+      patterns[decoder.domain] += decoder.patterns
       patterns[decoder.domain].uniq!
     end
   end
